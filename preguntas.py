@@ -7,7 +7,6 @@ En este laboratio se construirá un modelo de regresión lineal univariado.
 """
 import numpy as np
 import pandas as pd
-from sklearn.metrics import mean_absolute_error
 
 
 def pregunta_01():
@@ -31,7 +30,7 @@ def pregunta_01():
     print(y.shape)
 
     # Imprima las dimensiones de `X`
-    print(x.shape)
+    print(X.shape)
 
     # Transforme `y` a un array de numpy usando reshape
     y_reshaped = y.reshape(-1, 1)
@@ -93,7 +92,7 @@ def pregunta_03():
     # Asigne a la variable los valores de la columna `fertility`
     X_fertility = np.array(df["fertility"]).reshape(-1, 1)
 
-    # Asigne a la variable y los valores de la columna `life`
+    # Asigne a la variable los valores de la columna `life`
     y_life = np.array(df["life"]).reshape(-1, 1)
 
     # Importe LinearRegression
@@ -130,7 +129,7 @@ def pregunta_04():
     # Importe mean_squared_error
     from sklearn.linear_model import LinearRegression
     from sklearn.model_selection import train_test_split
-    from sklearn.metrics import 
+    from sklearn.metrics import mean_squared_error
 
     # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
     df = pd.read_csv(
@@ -166,5 +165,5 @@ def pregunta_04():
 
     # Compute and print R^2 and RMSE
     print("R^2: {:6.4f}".format(linearRegression.score(X_test, y_test)))
-    rmse = np.sqrt(mean_absolute_error(y_test, y_pred))
+    rmse = np.sqrt(mean_squared_error(y_test, y_pred))
     print("Root Mean Squared Error: {:6.4f}".format(rmse))
